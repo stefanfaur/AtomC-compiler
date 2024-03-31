@@ -43,7 +43,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: acc-${{ matrix.os }}
-          path: ${{ matrix.os == 'windows' && './acc.exe' || './acc' }}
+          path: ${{ matrix.os == 'windows-2022' && './acc.exe' || './acc' }}
 
       
 

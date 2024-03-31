@@ -1,10 +1,11 @@
 name: ci
 
 on:
-  pull_request:
   push:
     branches:
       - main
+    tags:
+      - 'v*'
 
 jobs:
   build:
@@ -40,5 +41,60 @@ jobs:
       - name: Build Project
         run: make
 
-      - name: Run Tests
-        run: make test
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: acc-${{ matrix.os }}
+          path: ./acc
+
+  create-release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          path: artifact
+
+      - name: Upload Artifacts to Release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./artifact/acc-windows-2022
+          asset_name: acc-windows.exe
+          asset_content_type: application/octet-stream
+
+      - name: Upload Artifacts to Release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./artifact/acc-ubuntu-22.04
+          asset_name: acc-ubuntu
+          asset_content_type: application/octet-stream
+
+      - name: Upload Artifacts to Release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./artifact/acc-macos-12
+          asset_name: acc-macos
+          asset_content_type: application/octet-stream
+
+

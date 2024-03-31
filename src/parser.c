@@ -1,8 +1,8 @@
 #include "parser.h"
-#include <Kernel/stdbool.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 #define SILENCE_LOGS 1
 

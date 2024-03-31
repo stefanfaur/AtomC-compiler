@@ -37,13 +37,13 @@ jobs:
           clangtidy: false
 
       - name: Build Project
-        run: make
+        run: make 
 
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v2
         with:
           name: acc-${{ matrix.os }}
-          path: ${{ matrix.os == 'windows-2022' && './acc_windows.exe' || matrix.os == 'ubuntu-22.04' && './acc_linux' || matrix.os == 'macos-12' && './acc_macos'}}
+          path: ${{ matrix.os == 'windows-2022' && './acc.exe' || './acc' }}
 
       
 
@@ -76,7 +76,7 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./artifact/acc-windows-2022
-          asset_name: acc_windows.exe
+          asset_name: acc-windows.exe
           asset_content_type: application/octet-stream
 
       - name: Upload Artifacts to Release
@@ -86,7 +86,7 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./artifact/acc-ubuntu-22.04
-          asset_name: acc_linux
+          asset_name: acc-linux
           asset_content_type: application/octet-stream
 
       - name: Upload Artifacts to Release
@@ -96,6 +96,6 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./artifact/acc-macos-12
-          asset_name: acc_macos
+          asset_name: acc-macos
           asset_content_type: application/octet-stream
 

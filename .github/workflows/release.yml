@@ -41,7 +41,7 @@ jobs:
       - name: Build Project
         run: make
 
-        - name: Set up file path
+      - name: Set up file path
         id: filepath
         run: echo "::set-output name=path::./acc${{ matrix.os == 'windows' && '.exe' || '' }}"
       - name: Upload Build Artifact

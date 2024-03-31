@@ -209,22 +209,20 @@ bool fnDef() {
           for (;;) {
             if (consume(COMMA)) {
               if (fnParam()) {
-              } else
-                {
-                  tkerr("Missing parameter after , in function definition");
-                  break;
-                }
+              } else {
+                tkerr("Missing parameter after , in function definition");
+                break;
+              }
             } else
               break;
           }
-          if (consume(RPAR)) {
-            if (stmCompound()) {
-              return true;
-            }
-          } else
-            tkerr("Missing ) in function definition");
         }
-      }
+        if (consume(RPAR)) {
+          if (stmCompound()) {
+            return true;
+          }
+        }
+      } 
     } else
       tkerr("Missing identifier in function definition");
   }

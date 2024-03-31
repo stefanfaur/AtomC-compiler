@@ -9,10 +9,10 @@ The AtomC Compiler is a work-in-progress compiler designed for educational purpo
 
 ## Compilation
 
-The *compiler can be compiled* using GCC with the following command:
+The *compiler can be compiled* using make with the following command:
 
 ```bash
-gcc -Wall -o acc main.c lexer.c utils.c parser.c
+make
 ```
 ## Usage
 
@@ -22,11 +22,17 @@ To compile an AtomC source file, use:
 ./acc <filename>
 ```
 
-For example, to test the parser, you can run:
+To test the parser, you can run:
 
 ```bash
-./acc tests/testparser.c
+make test
 ```
 
-Introduce syntax errors into `testparser.c` to see how the compiler responds.
+Introduce syntax errors into `tests/testparser.c` to see how the compiler responds.
 If you find that I'm missing an error, or something could be clearer, feel free to raise an issue!
+
+You can do cleanup with:
+
+```bash
+make clean
+```

@@ -21,6 +21,10 @@ int len(char s[]) {
   return i;
 }
 
+int main() {
+	return;
+}
+
 void main() {
   int i;
   i = 10;

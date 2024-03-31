@@ -41,11 +41,15 @@ jobs:
       - name: Build Project
         run: make
 
+        - name: Set up file path
+        id: filepath
+        run: echo "::set-output name=path::./acc${{ matrix.os == 'windows' && '.exe' || '' }}"
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v2
         with:
           name: acc-${{ matrix.os }}
-          path: ${{ matrix.os == 'windows-2022' && './acc.exe' || './acc' }}
+          path: ${{ steps.filepath.outputs.path }}
+      
 
   create-release: 
     needs: build

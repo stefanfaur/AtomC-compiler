@@ -10,6 +10,6 @@ int main () {
     Token *tokens = tokenize(inbuf);
     free(inbuf);
     showTokens(tokens);
-    //parse(tokens);
+    parse(tokens);
     return 0;
 }

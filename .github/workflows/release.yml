@@ -75,7 +75,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./artifact/acc-windows-2022
+          asset_path: ./artifact/acc-windows-2022/acc.exe
           asset_name: acc-windows.exe
           asset_content_type: application/octet-stream
 
@@ -85,7 +85,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./artifact/acc-ubuntu-22.04
+          asset_path: ./artifact/acc-ubuntu-22.04/acc
           asset_name: acc-linux
           asset_content_type: application/octet-stream
 
@@ -95,7 +95,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./artifact/acc-macos-12
+          asset_path: ./artifact/acc-macos-12/acc
           asset_name: acc-macos
           asset_content_type: application/octet-stream
 

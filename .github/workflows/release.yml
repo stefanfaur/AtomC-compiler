@@ -48,6 +48,7 @@ jobs:
           path: ./acc
 
   create-release:
+    permissions: write-all
     needs: build
     runs-on: ubuntu-latest
     steps:

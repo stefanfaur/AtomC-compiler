@@ -47,7 +47,7 @@ jobs:
           name: acc-${{ matrix.os }}
           path: ./acc
 
-  create-release:
+  create-release: 
     needs: build
     runs-on: ubuntu-latest
     permissions:

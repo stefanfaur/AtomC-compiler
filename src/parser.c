@@ -442,9 +442,9 @@ bool exprEq() {
       return true;
     }
   }
-  return false;
   tklog("exprEq() failed on token %s", getTokenType(iTk->code));
   iTk = start;
+  return false;
 }
 
 // exprEqPrim = ( EQUAL | NOTEQ ) exprRel exprEqPrim | epsilon
@@ -745,7 +745,6 @@ bool exprPrimary() {
   }
   iTk = start;
   tklog("exprPrimary() failed on token %s", getTokenType(iTk->code));
-  ;
   return false;
 }
 

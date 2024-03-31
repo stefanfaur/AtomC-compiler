@@ -1,0 +1,44 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - windows-2022
+          - ubuntu-22.04
+          - macos-12
+        include:
+          - os: windows-2022
+            compiler: msvc
+          - os: ubuntu-22.04
+            compiler: gcc
+          - os: macos-12
+            compiler: clang
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup C Environment
+        uses: aminya/setup-cpp@v1
+        with:
+          compiler: ${{ matrix.compiler }}
+          vcvarsall: ${{ contains(matrix.os, 'windows') }}
+          cmake: false
+          ninja: false
+          vcpkg: false
+          cppcheck: false
+          clangtidy: false
+
+      - name: Build Project
+        run: make
+
+      - name: Run Tests
+        run: make test

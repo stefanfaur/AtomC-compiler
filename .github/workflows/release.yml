@@ -45,7 +45,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: acc-${{ matrix.os }}
-          path: ./acc
+          path: ${{ matrix.os == 'windows-2022' && './acc.exe' || './acc' }}
 
   create-release: 
     needs: build

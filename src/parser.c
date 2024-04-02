@@ -221,7 +221,8 @@ bool fnDef() {
           if (stmCompound()) {
             return true;
           }
-        }
+        } else
+          tkerr("Missing ) in function definition");
       } 
     } else
       tkerr("Missing identifier in function definition");

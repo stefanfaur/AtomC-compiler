@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "utils.h"
-#include "lexer.h"
-#include "parser.h"
+#include "headers/utils.h"
+#include "headers/lexer.h"
+#include "headers/parser.h"
 
 int main(int argc, char *argv[]) {
     if (argc != 2) {

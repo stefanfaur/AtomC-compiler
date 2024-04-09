@@ -3,8 +3,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "utils.h"
-#include "ad.h"
+#include "headers/utils.h"
+#include "headers/ad.h"
 
 Domain *symTable=NULL;
 

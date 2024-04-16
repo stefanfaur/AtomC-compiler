@@ -240,14 +240,13 @@ bool fnParam() {
       }
       Symbol *param = findSymbolInDomain(symTable, tkName->text);
       if (param)
-        tkerr("symbol redefinition: %s", tkName->text);
+        tkerr("Symbol has already been defined: %s", tkName->text);
       param = newSymbol(tkName->text, SK_PARAM);
       param->type = t;
       param->owner = owner;
       param->paramIdx = symbolsLen(owner->fn.params);
-      // parametrul este adaugat atat la domeniul curent, cat si la parametrii
-      // fn addSymbolToDomain(symTable,param);
-      // addSymbolToList(&owner->fn.params,dupSymbol(param));
+      addSymbolToDomain(symTable,param);
+      addSymbolToList(&owner->fn.params,dupSymbol(param));
       return true;
     } else
       tkerr("Missing identifier in function parameter");

@@ -4,6 +4,10 @@ struct Pt {
 };
 struct Pt points[10];
 
+void main() {
+  int sapte;
+}
+
 double max(double a, double b) {
   if (a > b) {
     a = points[3].x;
@@ -14,29 +18,33 @@ double max(double a, double b) {
 }
 
 int len(char s[]) {
-  int i;
-  i = 0;
-  while (s[i])
-	  i = i + 1;
-  return i;
+  int ceva;
+  ceva = 0;
+  while (s[ceva])
+	  ceva = ceva + 1;
+  return ceva;
 }
 
+int ia;
+
 int main() {
-	return;
+  int doamne;
+  return;
 }
 
 void main() {
-  int i;
-  i = 10;
-  if (i != 5) {
-	puti(i);
+  int ceva;
+  int altceva;
+  ceva = 10;
+  if (ceva != 5) {
+	puti(ceva);
   } else {
 	puti(5);
   }
-  while (i != 0) {
-    puti(i);
-    i = i / 2;
-	i = i * 5;
-	i = i - 1;
+  while (ceva != 0) {
+    puti(ceva);
+    ceva = ceva / 2;
+	ceva = ceva * 5;
+	ceva = ceva - 1;
   }
 }

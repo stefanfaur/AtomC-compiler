@@ -4,6 +4,7 @@
 #include "headers/utils.h"
 #include "headers/lexer.h"
 #include "headers/parser.h"
+#include "headers/ad.h"
 
 int main(int argc, char *argv[]) {
     if (argc != 2) {
@@ -16,6 +17,11 @@ int main(int argc, char *argv[]) {
     Token *tokens = tokenize(inbuf);
     free(inbuf);
     //showTokens(tokens); for debugging, prints all tokens found by the lexer
+
+    pushDomain();
     parse(tokens);
+    showDomain(symTable, "global");
+    dropDomain();
+
     return 0;
 }

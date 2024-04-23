@@ -266,6 +266,7 @@ bool fnDef() {
   tklog("fnDef()");
   Token *start = iTk;
   if (consume(VOID)) {
+    t.n = -1;
     t.tb = TB_VOID;
     if (consume(ID)) {
       Token *tkName = consumedTk;

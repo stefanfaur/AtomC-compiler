@@ -21,6 +21,20 @@ int len(char s[]) {
   return i;
 }
 
+void ceva() {
+  int i;
+  i = 0;
+  while (i < 10) {
+    points[i].x = i;
+    points[i].y = i * i;
+    i = i + 1;
+  }
+}
+
+void puti(int i) {
+  printf("%d\n", i);
+}
+
 void main() {
   int i;
   i = 10;

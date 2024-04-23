@@ -236,7 +236,7 @@ bool fnParam() {
       Token *tkName = consumedTk;
       if (arrayDecl(&t)) {
         t.n = 0;
-        return true;
+        //return true;
       }
       Symbol *param = findSymbolInDomain(symTable, tkName->text);
       if (param)

@@ -1,6 +1,6 @@
 # AtomC Compiler
 
-The AtomC Compiler is a work-in-progress compiler that I am building fot my Compilation Techniques course. 
+The AtomC Compiler is a work-in-progress compiler that I am building for my Compilation Techniques course. 
 It currently supports lexical and syntactical analysis of the AtomC programming language, a small subset of C.
 
 ## Features so far

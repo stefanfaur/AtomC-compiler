@@ -137,7 +137,7 @@ bool varDef() {
           var->type = t;
           var->owner = owner;
           addSymbolToDomain(symTable, var);
-          if (owner) {
+          if (owner) { // local variable
             switch (owner->kind) {
             case SK_FN:
               var->varIdx = symbolsLen(owner->fn.locals);
@@ -148,7 +148,7 @@ bool varDef() {
               addSymbolToList(&owner->structMembers, dupSymbol(var));
               break;
             }
-          } else {
+          } else { // global variable
             var->varMem = safeAlloc(typeSize(&t));
           }
           return true;
@@ -236,7 +236,7 @@ bool fnParam() {
     if (consume(ID)) {
       Token *tkName = consumedTk;
       if (arrayDecl(&t)) {
-        t.n = 0;
+        t.n = 0; // array without specified dimension
         // return true;
       }
       Symbol *param = findSymbolInDomain(symTable, tkName->text);
@@ -693,7 +693,7 @@ bool exprRelPrim(Ret *r) {
       if (!arithTypeTo(&r->type, &right.type, &tDst)) {
         tkerr("Invalid operand type for relational operator");
       }
-      *r = (Ret){{TB_INT, NULL, -1}, false, true};
+      *r = (Ret){{TB_INT, NULL, -1}, false, true}; //
       if (exprRelPrim(r)) {
         return true;
       }

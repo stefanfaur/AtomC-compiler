@@ -6,6 +6,7 @@ struct S{
 struct S a;
 struct S v[10];
 
+
 void f(char text[],int i,char ch){
 	text[i]=ch;
 	}

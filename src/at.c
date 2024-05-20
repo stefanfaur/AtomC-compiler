@@ -3,14 +3,14 @@
 
 bool canBeScalar(Ret* r){
 	Type* t=&r->type;
-	if(t->n>=0)return false;
-	if(t->tb==TB_VOID)return false;
+	if(t->n>=0)return false; // arrays are not scalar
+	if(t->tb==TB_VOID)return false; // void is not scalar
 	return true;
 	}
 
 bool convTo(Type *src,Type *dst){
 	// the pointers (arrays) can be converted one to another, but in nothing else
-	if(src->n>=0){
+	if(src->n>=0){ 
 		if(dst->n>=0)return true;
 		return false;
 		}

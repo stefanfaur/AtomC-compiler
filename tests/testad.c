@@ -26,5 +26,5 @@ double sum(double x[5],int n){
 	}
 	
 void f(struct S1 p){
-	puti(p.i);
+	//puti(p);
 	}

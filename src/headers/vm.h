@@ -29,6 +29,9 @@ typedef enum{
 	,OP_FPSTORE		// [idx] puts in FP[idx] the value from stack
 	,OP_ADD_I			// adds 2 int values from stack and puts the result on stack
 	,OP_LESS_I			// compares 2 int values from stack and puts the result on stack as int
+	,OP_LESS_D			// compares 2 double values from stack and puts the result on stack as double
+	,OP_PUSH_D			// [ct.f] puts on stack the constant ct.f
+	,OP_ADD_D			// adds 2 double values from stack and puts the result on stack as double
 	}Opcode;
 
 typedef struct Instr Instr;
@@ -67,3 +70,6 @@ void run(Instr *IP);
 
 // generates a test program
 Instr *genTestProgram();
+
+// generates a test program with floating point numbers
+Instr *genTestProgramFloat();
